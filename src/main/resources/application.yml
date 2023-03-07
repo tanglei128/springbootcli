@@ -2,6 +2,8 @@ server:
   port: 8090
 # spring setting
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     url: jdbc:mysql://120.48.55.43:3306/springbootcli?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root

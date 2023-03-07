@@ -26,8 +26,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public ResponseResult getUserByMap(Map map) {
         List list = userMapper.selectByMap(map);
-
-        return new ResponseResult().success(list);
+        return  ResponseResult.success();
     }
 
     @Override
@@ -35,12 +34,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //创建page对象
         Page<User> pageParam = new Page<>(current, size);
         //调用方法实现条件查询分页
-        userService.page(pageParam,null);
-        List<User> records = pageParam.getRecords();//数据list集合
-        long total = pageParam.getTotal();//获取总记录数
-        Map map = new HashMap();
-        map.put("total",total);
-        map.put("records",records);
-        return new ResponseResult().success(map);
+        Page<User> page = userService.page(pageParam, null);
+//        List<User> records = pageParam.getRecords();//数据list集合
+//        long total = pageParam.getTotal();//获取总记录数
+        return ResponseResult.success(page);
     }
 }
