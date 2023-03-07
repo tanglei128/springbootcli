@@ -1,5 +1,10 @@
 # springbootcli
 springbootcli是一个基于springboot2.x的脚手架
+### 版本管理tag
+_使用tag进行管理，记录最小化/最轻量级的脚手架的变更_
+- release:mybatis-plus
+
+
 
 本脚手架包含：
 ### 集成的常用工具
