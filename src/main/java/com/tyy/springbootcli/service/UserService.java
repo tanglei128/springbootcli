@@ -11,4 +11,6 @@ public interface UserService extends IService<User> {
 
     ResponseResult getUserByMap(Map map);
 
+    ResponseResult getUserByPage(String id,Long current,Long size);
+
 }

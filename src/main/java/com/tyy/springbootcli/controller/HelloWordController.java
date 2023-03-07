@@ -30,4 +30,11 @@ public class HelloWordController {
         ResponseResult userByMap = userService.getUserByMap(map);
         return userByMap;
     }
+
+    @RequestMapping("/query/users/pages")
+    public ResponseResult queryUsers(String id,Long current,Long size){
+
+        ResponseResult userByMap = userService.getUserByPage(id,current,size);
+        return userByMap;
+    }
 }
