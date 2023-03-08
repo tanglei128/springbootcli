@@ -21,6 +21,9 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   ````
+- redis
+- 全局异常处理
+- log4j
 
 ### 自定义处理
 - 自定义异常
@@ -28,10 +31,7 @@ spring:
 - 自定义报错码
 
 ### 待集成
-- redis （尽可能做成开关形式，是否开启）
-- log4j （注意win和mac的区别，最好是使用application-win.yml进行区分）
-- 全局异常处理
 - token校验
-- shiro安全框架
+- shiro安全框架（切到一个新的分支，此类复杂权限适合OA,ERP,后台管理系统等，非必须）
 
 

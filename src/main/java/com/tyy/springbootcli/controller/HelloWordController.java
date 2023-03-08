@@ -1,5 +1,6 @@
 package com.tyy.springbootcli.controller;
 
+import com.tyy.springbootcli.common.exception.BusinessException;
 import com.tyy.springbootcli.result.ResponseResult;
 import com.tyy.springbootcli.service.UserService;
 import com.tyy.springbootcli.utils.ConstantUtil;
@@ -7,6 +8,7 @@ import com.tyy.springbootcli.utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.beans.BulkBeanException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +35,11 @@ public class HelloWordController {
         return "hello world";
     }
 
+    @ApiOperation("自定义异常处理接口测试")
+    @RequestMapping(value = "/exception",method = RequestMethod.GET,produces = ConstantUtil.JSON_PRODUCES)
+    public ResponseResult exception(){
+        throw new BusinessException("自定义抛出异常-由全局异常处理");
+    }
 
     @RequestMapping(value="/query/users",method = RequestMethod.GET,produces = ConstantUtil.JSON_PRODUCES)
     public ResponseResult queryUsers(String id){

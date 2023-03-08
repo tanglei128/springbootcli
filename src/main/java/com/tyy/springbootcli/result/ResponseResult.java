@@ -15,6 +15,15 @@ public class ResponseResult<T> extends BaseResponse{
         return createResult(RespCode.SUCCESS.getCode(),RespCode.SUCCESS.getMessage());
     }
 
+    public static<T> ResponseResult error(String msg){
+
+        return createResult(RespCode.FAILED.getCode(),msg);
+    }
+    public static<T> ResponseResult error(){
+
+        return createResult(RespCode.FAILED.getCode(),RespCode.FAILED.getMessage());
+    }
+
     private static <T> ResponseResult<T> createResult(String code,String msg,T data){
         ResponseResult<T> result = new ResponseResult<>();
         result.setCode(code);

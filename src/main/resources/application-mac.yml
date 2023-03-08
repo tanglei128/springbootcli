@@ -1,0 +1,7 @@
+server:
+  port: 8090
+my:
+  logfile:
+    size: 100KB
+    path: /Users/mac/tianshu/var/logs/springbootcli
+    name: springbootcli

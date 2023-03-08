@@ -1,7 +1,13 @@
-server:
-  port: 8090
 # spring setting
 spring:
+  profiles:
+    active: mac
+  application:
+    name: springbootcli
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  #springboot2.6及其以上版本需要设置以上
   main:
     allow-circular-references: true
   datasource:
@@ -21,13 +27,6 @@ spring:
         max-idle: 8
         min-idle: 0
 
-  application:
-    name: auth
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-#springboot2.6及其以上版本需要设置
-
 # ====================MybatisPlus====================
 mybatis-plus:
   global-config:
@@ -42,3 +41,13 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+
+###
+# 日志存放
+logging:
+  #path: /var/logs/${spring.application.name}
+  level:
+    com.tyy.springbootcli.mapper: DEBUG
+    root: info
+    org.springframework.web: info
+  config: classpath:logback-spring.xml
