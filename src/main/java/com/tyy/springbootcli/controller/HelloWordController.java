@@ -3,6 +3,7 @@ package com.tyy.springbootcli.controller;
 import com.tyy.springbootcli.result.ResponseResult;
 import com.tyy.springbootcli.service.UserService;
 import com.tyy.springbootcli.utils.ConstantUtil;
+import com.tyy.springbootcli.utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class HelloWordController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    RedisUtil redisUtil;
 
 
     @ApiOperation("测试接口1")
@@ -44,5 +48,13 @@ public class HelloWordController {
 
         ResponseResult userByMap = userService.getUserByPage(id,current,size);
         return userByMap;
+    }
+
+    @ApiOperation("redis测试接口-存放值")
+    @RequestMapping(value = "/redis/set",method = RequestMethod.GET,produces = ConstantUtil.JSON_PRODUCES)
+    public ResponseResult redisSet(String id){
+        redisUtil.set(id,id);
+        Object o = redisUtil.get(id);
+        return ResponseResult.success(o);
     }
 }

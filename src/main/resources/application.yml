@@ -9,6 +9,18 @@ spring:
     username: root
     password: psp128_master9515!
     driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    database: 0
+    host: 120.48.55.43
+    port: 6379
+    password: master123456!
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+
   application:
     name: auth
   mvc:
