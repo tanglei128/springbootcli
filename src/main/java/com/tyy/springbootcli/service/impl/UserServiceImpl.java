@@ -58,7 +58,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User user1 = userMapper.selectOne(queryWrapper);
         if (null!=user1){
             String token = UUID.randomUUID().toString();
-            redisUtil.set(token,username,30);
+//            设置为60s
+            redisUtil.set(token,username,60);
             return ResponseResult.success(token);
         }
         throw new BusinessException("登录失败");

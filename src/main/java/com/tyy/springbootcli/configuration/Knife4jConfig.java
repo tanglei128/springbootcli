@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Knife4jConfig {
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
-        String groupName="3.X版本";
+        String groupName="v3";
         Docket docket=new Docket(DocumentationType.OAS_30)
                 .apiInfo(new ApiInfoBuilder()
                         .title("这是knife4j API ")
@@ -35,16 +35,16 @@ public class Knife4jConfig {
         return docket;
     }
 
-    private ApiInfo adminApiInfo() {
-
-        //网页的相关属性
-        return new ApiInfoBuilder()
-                .title("后台管理系统-API文档")
-                .description("本文档描述了后台管理系统服务接口定义")
-                .version("1.0")
-                .contact(new Contact("sky", "http://www.baidu.com", "783567954@qq.com"))
-                .build();
-    }
+//    private ApiInfo adminApiInfo() {
+//
+//        //网页的相关属性
+//        return new ApiInfoBuilder()
+//                .title("后台管理系统-API文档")
+//                .description("本文档描述了后台管理系统服务接口定义")
+//                .version("1.0")
+//                .contact(new Contact("sky", "http://www.baidu.com", "783567954@qq.com"))
+//                .build();
+//    }
 }
 
 

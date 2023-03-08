@@ -51,3 +51,6 @@ logging:
     root: info
     org.springframework.web: info
   config: classpath:logback-spring.xml
+
+knife4j:
+  enable: true

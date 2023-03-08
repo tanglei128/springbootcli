@@ -30,16 +30,15 @@ public class ClearTokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-
+        System.out.println("request"+request.getHeader(AUTHORIZATION));
         String token = request.getHeader(AUTHORIZATION);
 
-        if (null != token) {
-            Object tokenRedis = redisUtil.get(token);
-
-            if (null == tokenRedis) {
-                throw new BusinessException("token校验不通过");
-//                response.setHeader(SESSION_TIME_OUT_K, SESSION_TIME_OUT_V);
-            }
+        if (null == token) {
+            throw new BusinessException("token为空");
+        }
+        Object tokenRedis = redisUtil.get(token);
+        if (null == tokenRedis) {
+            throw new BusinessException("token校验不通过");
         }
 
         return true;
