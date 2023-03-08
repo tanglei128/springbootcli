@@ -13,4 +13,6 @@ public interface UserService extends IService<User> {
 
     ResponseResult getUserByPage(String id,Long current,Long size);
 
+    ResponseResult login(String username,String pwd);
+
 }

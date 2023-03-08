@@ -29,11 +29,19 @@ public class HelloWordController {
     RedisUtil redisUtil;
 
 
+    @ApiOperation("登录")
+    @RequestMapping(value = "/login",method = RequestMethod.GET,produces = ConstantUtil.JSON_PRODUCES)
+    public ResponseResult login(String username,String pwd){
+        ResponseResult login = userService.login(username, pwd);
+        return login;
+    }
+
     @ApiOperation("测试接口1")
     @RequestMapping(value = "/helloworld",method = RequestMethod.GET,produces = ConstantUtil.JSON_PRODUCES)
     public String helloWord(){
         return "hello world";
     }
+
 
     @ApiOperation("自定义异常处理接口测试")
     @RequestMapping(value = "/exception",method = RequestMethod.GET,produces = ConstantUtil.JSON_PRODUCES)
