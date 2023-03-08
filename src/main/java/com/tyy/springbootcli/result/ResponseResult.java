@@ -15,14 +15,14 @@ public class ResponseResult<T> extends BaseResponse{
         return createResult(RespCode.SUCCESS.getCode(),RespCode.SUCCESS.getMessage());
     }
 
-    public static <T> ResponseResult<T> createResult(String code,String msg,T data){
+    private static <T> ResponseResult<T> createResult(String code,String msg,T data){
         ResponseResult<T> result = new ResponseResult<>();
         result.setCode(code);
         result.setMsg(msg);
         result.setData(data);
         return result;
     }
-    public static <T> ResponseResult<T> createResult(String code,String msg){
+    private static <T> ResponseResult<T> createResult(String code,String msg){
         ResponseResult<T> result = new ResponseResult<>();
         result.setCode(code);
         result.setMsg(msg);

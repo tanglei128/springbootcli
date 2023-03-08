@@ -9,6 +9,12 @@ spring:
     username: root
     password: psp128_master9515!
     driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: auth
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+#springboot2.6及其以上版本需要设置
 
 # ====================MybatisPlus====================
 mybatis-plus:

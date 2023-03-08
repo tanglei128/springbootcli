@@ -11,6 +11,16 @@ _使用tag进行管理，记录最小化/最轻量级的脚手架的变更_
 - mysql5.7
 - Mybatis-plus
 - 分页处理
+- knife4j在线文档
+````
+#springboot2.6及其以上版本需要设置,才能正确启用knife4j 
+spring:
+  application:
+    name: auth
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  ````
 
 ### 自定义处理
 - 自定义异常
