@@ -19,6 +19,10 @@ public class ResponseResult<T> extends BaseResponse{
 
         return createResult(RespCode.FAILED.getCode(),msg);
     }
+    public static<T> ResponseResult error(String code,String msg){
+
+        return createResult(code,msg);
+    }
     public static<T> ResponseResult error(){
 
         return createResult(RespCode.FAILED.getCode(),RespCode.FAILED.getMessage());

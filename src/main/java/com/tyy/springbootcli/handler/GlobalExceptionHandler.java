@@ -1,5 +1,7 @@
 package com.tyy.springbootcli.handler;
+import com.tyy.springbootcli.common.exception.AuthException;
 import com.tyy.springbootcli.common.exception.BusinessException;
+import com.tyy.springbootcli.result.RespCode;
 import com.tyy.springbootcli.result.ResponseResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,8 @@ public class GlobalExceptionHandler  {
         logger.error("请求出现异常:"+ request.getRequestURI()+","+exception.getMessage());
         if (exception instanceof BusinessException){
             return ResponseResult.error(exception.getMessage());
+        }else if (exception instanceof AuthException){
+            return ResponseResult.error(RespCode.AUTH_FAILED.getCode(),exception.getMessage());
         } else {
             logger.error("请求异常详情:"+ exception.getMessage());
             return ResponseResult.error("系统异常");

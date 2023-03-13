@@ -3,12 +3,15 @@ package com.tyy.springbootcli.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.tyy.springbootcli.common.exception.AuthException;
 import com.tyy.springbootcli.common.exception.BusinessException;
 import com.tyy.springbootcli.entity.User;
 import com.tyy.springbootcli.mapper.UserMapper;
 import com.tyy.springbootcli.result.ResponseResult;
 import com.tyy.springbootcli.service.UserService;
+import com.tyy.springbootcli.utils.ConstantUtil;
 import com.tyy.springbootcli.utils.RedisUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +52,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public ResponseResult login(String username, String pwd) {
+        if(StringUtils.isBlank(username)||StringUtils.isBlank(pwd)){
+            throw new AuthException("用户名或密码不能为空！");
+        }
         User user = new User();
         user.setName(username);
         user.setPwd(pwd);
@@ -59,9 +65,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (null!=user1){
             String token = UUID.randomUUID().toString();
 //            设置为60s
-            redisUtil.set(token,username,60);
+            redisUtil.set(token,username, ConstantUtil.REDIS_ALIVE_TIME);
             return ResponseResult.success(token);
         }
-        throw new BusinessException("登录失败");
+        throw new AuthException("登录失败");
     }
 }
