@@ -22,13 +22,13 @@ public class AuthConfig implements WebMvcConfigurer {
         //excludePathPatterns：哪些路径下不会被拦截
         // 无需拦截的接口集合
         List<String> ignorePath = new ArrayList<>();
-        ignorePath.add("/v1/login");
+//        ignorePath.add("/v1/login");
         // knife4j(swagger) v2->v3 此处很重要，涉及到拦截器是否能正确放行
         ignorePath.add("/swagger-resources/**");
-        ignorePath.add("/doc.html");
+        ignorePath.add("/doc.html/**");
         ignorePath.add("/v3/**");
         ignorePath.add("/webjars/**");
-
+        ignorePath.add("/favicon.ico");
         ignorePath.add("/static/**");
         ignorePath.add("/templates/**");
         ignorePath.add("/error");
